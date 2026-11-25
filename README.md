@@ -1,4 +1,4 @@
-# Contracts Design
+# Design Software Interfaces
 
 A language-neutral [Agent Skill](https://agentskills.io/) for designing, reviewing, and refactoring software interfaces and behavioral contracts, with specific guidance for PHP, TypeScript/JavaScript, and Kotlin.
 
@@ -8,20 +8,22 @@ The skill helps coding agents decide what to expose or hide, choose useful abstr
 
 Use the [Skills CLI](https://github.com/vercel-labs/skills). It requires Node.js/npm and access to GitHub. No separate npm package or custom installer is needed.
 
+The repository, skill directory, and skill identifier all use `design-software-interfaces`. Installation takes the repository as its source; update and removal commands take the skill identifier.
+
 ```sh
-npx skills add Shelamkoff/contracts-design
+npx skills add Shelamkoff/design-software-interfaces
 ```
 
 Install for Codex in the current project:
 
 ```sh
-npx skills add Shelamkoff/contracts-design --skill design-software-interfaces -a codex -y
+npx skills add Shelamkoff/design-software-interfaces --skill design-software-interfaces -a codex -y
 ```
 
 Install for Codex across all projects:
 
 ```sh
-npx skills add Shelamkoff/contracts-design --skill design-software-interfaces -g -a codex -y
+npx skills add Shelamkoff/design-software-interfaces --skill design-software-interfaces -g -a codex -y
 ```
 
 For another supported agent, replace `codex` with its identifier (for example, `claude-code` or `cursor`). Omit `-a` and `-y` to select agents interactively. See the [CLI reference](https://github.com/vercel-labs/skills/blob/main/docs/commands.md) for additional options.
@@ -29,15 +31,38 @@ For another supported agent, replace `codex` with its identifier (for example, `
 List available skills without installing:
 
 ```sh
-npx skills add Shelamkoff/contracts-design --list
+npx skills add Shelamkoff/design-software-interfaces --list
 ```
+
+## Migrating an existing installation
+
+The repository has been renamed to `Shelamkoff/design-software-interfaces`.
+The skill identifier has not changed.
+
+If you installed the skill from the former repository URL, reinstall from the
+new canonical source to refresh the recorded source in the Skills CLI lock file.
+Back up any local modifications before reinstalling. Use the same scope and
+agent selection as your original installation:
+
+```sh
+# Project installation (select your agents)
+npx skills add Shelamkoff/design-software-interfaces --skill design-software-interfaces
+
+# Global installation (select your agents)
+npx skills add Shelamkoff/design-software-interfaces --skill design-software-interfaces -g
+```
+
+Use `npx skills list` or `npx skills list -g` to inspect the corresponding
+installation. If the old source is still recorded, remove the skill in that
+scope and install it again using the new URL. No invocation or skill-directory
+rename is needed.
 
 ## Manual installation
 
 Clone the repository or download the source archive from GitHub:
 
 ```sh
-git clone https://github.com/Shelamkoff/contracts-design.git
+git clone https://github.com/Shelamkoff/design-software-interfaces.git
 ```
 
 Copy the entire `skills/design-software-interfaces/` directory, including its references, assets, agent metadata, and license, into your agent's skills directory. For Codex and Claude Code:
@@ -65,6 +90,10 @@ The skill concerns software contracts, not visual UI/UX. It does not prescribe a
 For an installation managed by the Skills CLI:
 
 ```sh
+# List installed skills in the current project or globally
+npx skills list
+npx skills list -g
+
 # Check installed skills for updates
 npx skills check
 
